@@ -33,6 +33,20 @@ while ($data = $category->fetch()){
 		<?php
 	}
 	?>
+	<tr>
+		<th></th>
+		<th>
+			<?php 
+				for ($i=1;$i<=$numberPage;$i++){
+					if($i == $pageCourante){
+						echo $i.' ';
+					}else{
+						echo '<a href="index.php?pageTome='.$i.'&amp;id='.$id.'">'.$i.'</a>';
+					}
+				}
+			?>
+		</th>
+	</tr>
 </table>
 <?php $body = ob_get_clean(); ?>
 <?php require('template.php'); ?>

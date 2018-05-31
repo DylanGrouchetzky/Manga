@@ -24,9 +24,18 @@ class ViewManager extends Manager{
 		return $name;
 	}
 
-	public function numberPage($numberLine){
+	public function numberPageManga($numberLine){
 		$db = $this->dbConnect();
 		$req = $db->query('SELECT * FROM manga');
+		$numberLineTotal = $req->rowCount();
+		$numberPage = ceil($numberLineTotal/$numberLine);
+		return $numberPage;
+	}
+
+	public function numberPageTome($numberLine, $id){
+		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT * FROM tome WHERE manga = ?');
+		$req->execute(array($id));
 		$numberLineTotal = $req->rowCount();
 		$numberPage = ceil($numberLineTotal/$numberLine);
 		return $numberPage;
@@ -35,6 +44,13 @@ class ViewManager extends Manager{
 	public function displayManga($start, $numberLine){
 		$db = $this->dbConnect();
 		$req = $db->query('SELECT * FROM manga ORDER BY name LIMIT '.$start.','.$numberLine);
+		return $req;
+	}
+
+	public function displayTome($id, $start, $numberLine){
+		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT * FROM tome WHERE manga = ? LIMIT '.$start.','.$numberLine);
+		$req->execute(array($id));
 		return $req;
 	}
 

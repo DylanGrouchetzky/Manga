@@ -5,13 +5,16 @@ try{
 	if(isset($_GET['page'])){
 		listMangaNext($_GET['page']);
 	}
+	elseif(isset($_GET['pageTome'])){
+		tomeNext($_GET['id'], $_GET['pageTome']);
+	}
 	elseif (isset($_GET['action'])){
 		if($_GET['action'] == 'listManga'){
 			listManga();
 		}
 		elseif ($_GET['action'] == 'tome'){
 			if (isset($_GET['id']) && $_GET['id'] > 0){
-				tome();
+				tome($_GET['id']);
 			}else{
 				throw new Exception("Aucun identifiant de manga envoyé !");
 			}

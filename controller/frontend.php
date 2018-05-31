@@ -8,7 +8,7 @@ function listMangaNext($page){
 	$category = $viewManager->category();
 	$pageCourante = $_GET['page'];
 	$start = ($pageCourante-1)*5;
-	$numberPage = $viewManager->numberPage(5);
+	$numberPage = $viewManager->numberPageManga(5);
 	$manga = $viewManager->displayManga($start, 5);
 
 	require('view/frontend/listMangaView.php');
@@ -19,16 +19,30 @@ function listManga(){
 	$category = $viewManager->category();
 	$pageCourante = 1;
 	$start = ($pageCourante-1)*5;
-	$numberPage = $viewManager->numberPage(5);
+	$numberPage = $viewManager->numberPageManga(5);
 	$manga = $viewManager->displayManga($start, 5);
 
 	require('view/frontend/listMangaView.php');
 }
 
-function tome(){
+function tome($id){
 	$viewManager = new ViewManager();
-	$tome = $viewManager->listTome($_GET['id']);
 	$category = $viewManager->category();
+	$pageCourante = 1;
+	$start = ($pageCourante-1)*10;
+	$numberPage = $viewManager->numberPageTome(10, $id);
+	$tome = $viewManager->displayTome($id, $start, 10);
+
+	require('view/frontend/tomeView.php');
+}
+
+function tomeNext($id, $page){
+	$viewManager = new ViewManager();
+	$category = $viewManager->category();
+	$pageCourante = $_GET['pageTome'];
+	$start = ($pageCourante-1)*10;
+	$numberPage = $viewManager->numberPageTome(10, $id);
+	$tome = $viewManager->displayTome($id ,$start, 10);
 
 	require('view/frontend/tomeView.php');
 }
