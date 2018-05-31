@@ -32,6 +32,7 @@ function tome($id){
 	$start = ($pageCourante-1)*10;
 	$numberPage = $viewManager->numberPageTome(10, $id);
 	$tome = $viewManager->displayTome($id, $start, 10);
+	$nameManga = $viewManager->selectManga($id);
 
 	require('view/frontend/tomeView.php');
 }
@@ -43,6 +44,7 @@ function tomeNext($id, $page){
 	$start = ($pageCourante-1)*10;
 	$numberPage = $viewManager->numberPageTome(10, $id);
 	$tome = $viewManager->displayTome($id ,$start, 10);
+	$nameManga = $viewManager->selectManga($id);
 
 	require('view/frontend/tomeView.php');
 }

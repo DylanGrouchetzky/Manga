@@ -8,7 +8,7 @@ while ($data = $category->fetch()){
 ?>
 <?php $genre = ob_get_clean(); ?>
 <?php ob_start(); ?>
-<h1>Les Tomes</h1>
+<h1>Les Tomes de <?= $nameManga['name'] ?></h1>
 <table>
 	<?php
 	while ($tomes = $tome->fetch()){
@@ -18,11 +18,11 @@ while ($data = $category->fetch()){
 				<?php
 				if ($tomes['quantite'] > 0){
 					?>
-					<img src="public/image/<?= $tomes['picture']; ?>" class="thumbnail">
+					<img src="public/image/<?= $nameManga['name'] ?>/<?= $tomes['picture']; ?>" class="thumbnail">
 					<?php
 				}else{
 					?>
-					<img src="public/image/<?= $tomes['picture']; ?>" class="thumbnail" style="-webkit-filter: grayscale(100%); -webkit-filter: grayscale(100%);">
+					<img src="public/image/<?= $nameManga['name'] ?>/<?= $tomes['picture']; ?>" class="thumbnail" style="-webkit-filter: grayscale(100%); -webkit-filter: grayscale(100%);">
 					<?php
 				}
 				?>
