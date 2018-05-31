@@ -26,6 +26,10 @@ while ($data = $category->fetch()){
 			</th>
 		</tr>
 		<tr>
+			<th><label for="number">Nombre de tome :</label></th>
+			<th><input type="text" name="number" id="number"></th>
+		</tr>
+		<tr>
 			<th><label for="name">Nom du tome :</label></th>
 			<th><input type="text" name="name" id="name"></th>
 		</tr>

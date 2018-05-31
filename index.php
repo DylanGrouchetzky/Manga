@@ -20,8 +20,8 @@ try{
 			formTome();
 		}
 		elseif ($_GET['action'] == 'addTome'){
-			if (!empty($_POST['name']) && !empty($_POST['picture'])){
-				addTome($_POST['mangaID'], $_POST['name'], $_POST['picture'], $_POST['amount']);
+			if (!empty($_POST['name']) OR !empty($_POST['number'])) {
+				addTome($_POST['mangaID'], $_POST['name'], $_POST['picture'], $_POST['amount'], $_POST['number']);
 			}else{
 				throw new Exception("Il manque le nom et l'image");
 			}	

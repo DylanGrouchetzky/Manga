@@ -33,14 +33,28 @@ function tome(){
 	require('view/frontend/tomeView.php');
 }
 
-function addTome($mangaID, $nameTome, $picture, $amount){
-	$insertManager = new InsertManager();
-	$newTome = $insertManager->treatmentTome($mangaID, $nameTome, $picture, $amount);
-
-	if($newTome === false){
-		throw new Exception("Impossible d'ajouter le tome !");
-	}else{
+function addTome($mangaID, $nameTome, $picture, $amount, $number){
+	if(!empty($_POST['number'])){
+		$viewManager = new ViewManager();
+		$tome = $viewManager->listTome($mangaID);
+		$numberLineTotal = $tome->rowCount();
+		for ($i=1; $i <= $number; $i++) {
+			$numberTome = $numberLineTotal + $i; 
+			$nameTome = "Tome ".$numberTome;
+			$insertManager = new InsertManager();
+			$newTome = $insertManager->treatmentTome($mangaID, $nameTome, $picture, $amount);
+		}
 		header('Location: index.php?action=tome&id='.$mangaID);
+	}
+	elseif(empty($_POST['number'])) {
+		$insertManager = new InsertManager();
+		$newTome = $insertManager->treatmentTome($mangaID, $nameTome, $picture, $amount);
+
+		if($newTome === false){
+			throw new Exception("Impossible d'ajouter le tome !");
+		}else{
+			header('Location: index.php?action=tome&id='.$mangaID);
+		}
 	}
 
 }
