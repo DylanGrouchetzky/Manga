@@ -34,19 +34,18 @@ while ($data = $category->fetch()){
 	}
 	?>
 	<tr>
-		<th></th>
-		<th>
-			<?php 
-				for ($i=1;$i<=$numberPage;$i++){
-					if($i == $pageCourante){
-						echo $i.' ';
-					}else{
-						echo '<a href="index.php?pageTome='.$i.'&amp;id='.$id.'">'.$i.'</a>';
-					}
-				}
-			?>
-		</th>
-	</tr>
 </table>
+<p class="paginage">
+	<?php 
+		for ($i=1;$i<=$numberPage;$i++){
+			if($i == $pageCourante){
+				echo '<span class="active">'.$i.'</span> ';
+			}else{
+				echo '<a href="index.php?pageTome='.$i.'&amp;id='.$id.'">'.$i.'</a>';
+			}
+		}
+	?>
+</p>
+
 <?php $body = ob_get_clean(); ?>
 <?php require('template.php'); ?>

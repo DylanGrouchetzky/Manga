@@ -66,6 +66,14 @@ class ViewManager extends Manager{
 		$req->execute(array($mangaID));
 		return $req;
 	}	
+
+	public function numberTome($mangaID){
+		$db = $this->dbConnect();
+		$req = $db->query('SELECT * FROM tome WHERE manga = '.$mangaID);
+		$numberTome = $req->rowCount();
+		return $numberTome;
+	}
+
 	public function selectManga($ID){
 		$db = $this->dbConnect();
 		$req = $db->prepare('SELECT * FROM manga WHERE ID = ?');

@@ -91,3 +91,32 @@ header nav a:hover, header nav a:focus{
 #selectPicture a{
 	padding: 0 10px;
 }
+
+/* PAGINAGE */
+
+.paginage a:hover{
+	padding: 10px;
+	background: red;
+	border-radius: 5px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+.paginage .active{
+	padding: 10px;
+	background: red;
+	border-radius: 5px;
+	color: #fff;
+	font-weight: bold;
+}
+.paginage a{
+	padding: 10px;
+	margin: 0 3px;
+	background:  #616161;
+	color: #000;
+	border-radius: 5px;
+	font-weight: bold;
+}
+.paginage{
+	text-align: center;
+}

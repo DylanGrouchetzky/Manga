@@ -131,6 +131,12 @@ function nameCategory($ID){
 	return $name;
 }
 
+function numberTome($id){
+	$viewManager = new ViewManager();
+	$numberTome = $viewManager->numberTome($id);
+	return $numberTome;
+}
+
 function selectUpdate(){
 	$viewManager = new ViewManager();
 	$category = $viewManager->category();
